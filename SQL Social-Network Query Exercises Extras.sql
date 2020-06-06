@@ -1,10 +1,9 @@
 -- Q1. For every situation where student A likes student B, but student B likes a different student C, return the names and grades of A, B, and C.
 SELECT h1.name, h1.grade, h2.name, h2.grade, h3.name, h3.grade
-FROM highschooler h1 
-JOIN likes l, highschooler h2, likes l2, likes l3, highschooler h3
-WHERE h1.ID = l.ID1 AND h2.ID = l.ID2
-AND h2.ID = l2.ID1 AND h1.ID != l2.ID2
-AND h2.ID = l3.ID1 AND h3.ID = l3.ID2
+FROM highschooler h1, highschooler h2, highschooler h3, likes l1, likes l2
+WHERE h1.id = l1.id1 AND h2.id = l1.id2 
+AND l1.id2 = l2.id1 AND h3.id = l2.id2
+AND h1.id <> h3.id;
 
 -- Q2. Find those students for whom all of their friends are in different grades from themselves. Return the students' names and grades.
 SELECT DISTINCT h1.name, h1.grade
